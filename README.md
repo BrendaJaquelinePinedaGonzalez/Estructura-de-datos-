@@ -63,7 +63,7 @@ int leerEntero(char *mensaje) {
     return atoi(texto);
 }
 
-/* ---------- Fechas ---------- */
+/* Fechas */
 
 int diasDelMes(int mes, int anio) {
     int cantidad[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -94,7 +94,7 @@ int diaSemana(int dia, int mes, int anio) {
     return (anio + anio / 4 - anio / 100 + anio / 400 + t[mes - 1] + dia) % 7;
 }
 
-/* ---------- Lista de materias ---------- */
+/* Lista de materias  */
 
 struct Materia *buscarMateria(char *nombre) {
     struct Materia *aux = materias;
@@ -124,7 +124,7 @@ void agregarMateria(char *nombre) {
     }
 }
 
-/* ---------- Lista de unidades ---------- */
+/*  Lista de unidades  */
 
 struct Unidad *buscarUnidad(struct Materia *materia, char *nombre) {
     struct Unidad *aux = materia->unidades;
@@ -154,7 +154,7 @@ void agregarUnidad(struct Materia *materia, char *nombre) {
     }
 }
 
-/* ---------- Lista de tareas ---------- */
+/*  Lista de tareas  */
 
 struct Tarea *buscarTarea(struct Unidad *unidad, char *nombre) {
     struct Tarea *aux = unidad->tareas;
@@ -188,7 +188,7 @@ void agregarTarea(struct Unidad *unidad, char *nombre, int dia, int mes, int ani
     }
 }
 
-/* ---------- Cola de pendientes ---------- */
+/*  Cola de pendientes  */
 
 void encolar(struct Pendiente *nuevo) {
     nuevo->sig = NULL;
@@ -214,7 +214,7 @@ struct Pendiente *desencolar() {
     return sacado;
 }
 
-/* ---------- Pila de completadas ---------- */
+/*  Pila de completadas  */
 
 void apilar(struct Pendiente *nuevo) {
     nuevo->sig = tope;
@@ -231,7 +231,7 @@ struct Pendiente *desapilar() {
     return sacado;
 }
 
-/* ---------- Funciones del menu ---------- */
+/*  Funciones del menu  */
 
 void opcionAgregarMateria() {
     char nombre[50];
@@ -408,7 +408,7 @@ void opcionHistorial() {
     }
 }
 
-/* ---------- Calendario ---------- */
+/*  Calendario  */
 
 void agregarEvento(int dia, struct Tarea *t, char *materia) {
     struct Evento *nuevo = (struct Evento *)malloc(sizeof(struct Evento));
@@ -527,7 +527,7 @@ void opcionCalendario() {
     liberarCalendario();
 }
 
-/* ---------- Liberar memoria ---------- */
+/*  Liberar memoria  */
 
 void liberarPendientes(struct Pendiente *lista) {
     while (lista != NULL) {
@@ -577,7 +577,7 @@ void mostrarMenu() {
     printf("Opcion: ");
 }
 
-/* ---------- Programa principal ---------- */
+
 
 int main() {
     char texto[50];
