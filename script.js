@@ -364,10 +364,10 @@ function escapar(valor) {
     return String(valor).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" })[c]);
 }
 
-// NUEVA FUNCIÓN PARA GESTIONAR EL BUZÓN DE NETLIFY MEDIANTE FETCH
+
 function mostrarFormularioNetlify() {
     ocultarFormularios();
-    document.getElementById("tituloVista").textContent = "Buzón de Comentarios (Netlify)";
+    document.getElementById("tituloVista").textContent = "Buzón de Comentarios ";
     document.getElementById("descripcionVista").textContent = "Envía tus comentarios o sugerencias directamente a la plataforma.";
     
     let vista = document.getElementById("vista");
@@ -387,7 +387,7 @@ function mostrarFormularioNetlify() {
                     <label style="display: block; margin-bottom: 5px;"><strong>Mensaje / Comentario:</strong></label>
                     <textarea name="mensaje" rows="4" required style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--gris);"></textarea>
                 </div>
-                <button type="submit" class="btn btn-verde">Enviar a Netlify</button>
+                <button type="submit" class="btn btn-verde">Enviar a Jaque </button>
             </form>
             <div id="respuestaNetlify" style="margin-top: 15px; font-weight: bold;"></div>
         </div>
@@ -403,7 +403,7 @@ function mostrarFormularioNetlify() {
             body: new URLSearchParams(formData).toString()
         })
         .then(() => {
-            alert("¡Mensaje enviado con éxito a Netlify!");
+            alert("¡Mensaje enviado con éxito !");
             this.reset();
         })
         .catch(error => {
