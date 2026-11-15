@@ -1,7 +1,4 @@
 
-// ==========================================
-// 1. ALMACENAMIENTO DE INFORMACIÓN
-// ==========================================
 
 function cargarDatos(clave, valorInicial) {
     try {
@@ -41,9 +38,6 @@ let tareas = cargarDatos("org-tareas", [
 let historial = cargarDatos("org-historial", []);
 let acciones = cargarDatos("org-acciones", []);
 
-// ==========================================
-// 2. GUARDAR INFORMACIÓN
-// ==========================================
 
 function guardar() {
     localStorage.setItem("org-materias", JSON.stringify(materias));
@@ -63,9 +57,6 @@ function registrar(mensaje) {
     guardar();
 }
 
-// ==========================================
-// 3. ESTADÍSTICAS
-// ==========================================
 
 function actualizarEstadisticas() {
     const totalMaterias = document.getElementById("totalMaterias");
@@ -87,9 +78,7 @@ function actualizarEstadisticas() {
     }
 }
 
-// ==========================================
-// 4. MODO OSCURO Y CLARO
-// ==========================================
+
 
 function actualizarBotonModo() {
     const boton = document.querySelector(".btn-modo");
@@ -111,7 +100,7 @@ function alternarModo() {
     actualizarBotonModo();
 }
 
-// Recuperar tema guardado
+
 const temaGuardado = localStorage.getItem("org-theme");
 
 if (temaGuardado === "dark") {
@@ -120,9 +109,6 @@ if (temaGuardado === "dark") {
     document.documentElement.setAttribute("data-theme", "light");
 }
 
-// ==========================================
-// 5. NAVEGACIÓN Y FORMULARIOS
-// ==========================================
 
 function ocultarFormularios() {
     document.querySelectorAll(".formulario").forEach(f => {
@@ -161,9 +147,6 @@ function mostrarFormulario(tipo) {
     actualizarSelects();
 }
 
-// ==========================================
-// 6. ACTUALIZAR LISTAS DE MATERIAS
-// ==========================================
 
 function actualizarSelects() {
     let opciones = '<option value="">Selecciona una materia</option>';
@@ -189,9 +172,7 @@ function actualizarSelects() {
     }
 }
 
-// ==========================================
-// 7. ACTUALIZAR UNIDADES
-// ==========================================
+
 
 function actualizarUnidades() {
     const materiaSelect = document.getElementById("materiaTarea");
@@ -213,9 +194,6 @@ function actualizarUnidades() {
     `).join("");
 }
 
-// ==========================================
-// 8. AGREGAR MATERIA
-// ==========================================
 
 function agregarMateria() {
     const nombre = document.getElementById("nombreMateria").value.trim();
@@ -245,10 +223,6 @@ function agregarMateria() {
     inicio();
 }
 
-// ==========================================
-// 9. AGREGAR UNIDAD
-// ==========================================
-
 function agregarUnidad() {
     const id = Number(document.getElementById("materiaUnidad").value);
     const nombre = document.getElementById("nombreUnidad").value.trim();
@@ -271,9 +245,7 @@ function agregarUnidad() {
     inicio();
 }
 
-// ==========================================
-// 10. AGREGAR TAREA
-// ==========================================
+
 
 function agregarTarea() {
     const idMateria = Number(document.getElementById("materiaTarea").value);
@@ -317,10 +289,6 @@ function agregarTarea() {
 
     mostrarTodo();
 }
-
-// ==========================================
-// 11. PANTALLA DE INICIO
-// ==========================================
 
 function inicio() {
     ocultarFormularios();
@@ -393,9 +361,6 @@ function inicio() {
     actualizarEstadisticas();
 }
 
-// ==========================================
-// 12. MOSTRAR TODAS LAS TAREAS
-// ==========================================
 
 function mostrarTodo() {
     ocultarFormularios();
@@ -413,9 +378,6 @@ function mostrarTodo() {
     actualizarEstadisticas();
 }
 
-// ==========================================
-// 13. BUSCADOR
-// ==========================================
 
 function filtrarTareas(texto) {
     const busqueda = texto.toLowerCase();
@@ -428,9 +390,6 @@ function filtrarTareas(texto) {
     renderizarListaTareas(filtradas);
 }
 
-// ==========================================
-// 14. MOSTRAR LISTA DE TAREAS
-// ==========================================
 
 function renderizarListaTareas(lista) {
     const vista = document.getElementById("vista");
@@ -511,9 +470,6 @@ function renderizarListaTareas(lista) {
     }).join("");
 }
 
-// ==========================================
-// 15. SIGUIENTE TAREA
-// ==========================================
 
 function siguienteTarea() {
     ocultarFormularios();
@@ -563,9 +519,6 @@ function siguienteTarea() {
     `;
 }
 
-// ==========================================
-// 16. COMPLETAR TAREA
-// ==========================================
 
 function completarTarea(id) {
     const tarea = tareas.find(t => t.id === id);
@@ -584,9 +537,6 @@ function completarTarea(id) {
     mostrarTodo();
 }
 
-// ==========================================
-// 17. COMPLETAR SIGUIENTE
-// ==========================================
 
 function completarSiguiente() {
     const pendientes = tareas
@@ -601,9 +551,7 @@ function completarSiguiente() {
     completarTarea(pendientes[0].id);
 }
 
-// ==========================================
-// 18. DESHACER ACCIONES (PILA LIFO)
-// ==========================================
+
 
 function deshacer() {
     const accion = acciones.pop();
@@ -632,9 +580,8 @@ function deshacer() {
     mostrarTodo();
 }
 
-// ==========================================
-// 19. ELIMINAR TAREA
-// ==========================================
+
+
 
 function eliminarTarea(id) {
     if (!confirm("¿Deseas eliminar esta tarea permanentemente?")) {
@@ -656,9 +603,6 @@ function eliminarTarea(id) {
     mostrarTodo();
 }
 
-// ==========================================
-// 20. VISUALIZADOR DE ESTRUCTURAS
-// ==========================================
 
 function mostrarEstructuras() {
     ocultarFormularios();
@@ -733,9 +677,6 @@ function mostrarEstructuras() {
     document.getElementById("vista").innerHTML = html;
 }
 
-// ==========================================
-// 21. HISTORIAL DE ACTIVIDADES
-// ==========================================
 
 function mostrarHistorial() {
     ocultarFormularios();
@@ -765,9 +706,7 @@ function mostrarHistorial() {
     `).join("");
 }
 
-// ==========================================
-// 22. CALENDARIO
-// ==========================================
+
 
 function mostrarCalendario() {
     ocultarFormularios();
@@ -811,9 +750,7 @@ function mostrarCalendario() {
     `).join("");
 }
 
-// ==========================================
-// 23. CÓDIGO FUENTE EN C
-// ==========================================
+
 
 function mostrarCodigoC() {
     ocultarFormularios();
@@ -859,9 +796,7 @@ function copiarCodigoC() {
         });
 }
 
-// ==========================================
-// 24. PROTEGER TEXTO HTML
-// ==========================================
+
 
 function escapar(valor) {
     return String(valor ?? "").replace(/[&<>"']/g, c => ({
@@ -872,10 +807,6 @@ function escapar(valor) {
         "'": "&#39;"
     })[c]);
 }
-
-// ==========================================
-// 25. FORMULARIO DE COMENTARIOS NETLIFY
-// ==========================================
 
 function mostrarFormularioNetlify() {
     ocultarFormularios();
@@ -978,9 +909,7 @@ function mostrarFormularioNetlify() {
     });
 }
 
-// ==========================================
-// 26. INICIALIZACIÓN
-// ==========================================
+
 
 actualizarBotonModo();
 actualizarEstadisticas();
