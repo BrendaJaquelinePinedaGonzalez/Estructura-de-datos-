@@ -371,7 +371,7 @@ function mostrarFormularioNetlify() {
     document.getElementById("descripcionVista").textContent = "Envía tus comentarios o sugerencias directamente a la plataforma.";
     
     let vista = document.getElementById("vista");
-    vista.innerHTML = `
+    vista.innerHTML = 
         <div class="tarjeta" style="max-width: 600px; margin: 0 auto;">
             <form id="formNetlify" name="contacto-net" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="contacto-net" />
@@ -391,7 +391,7 @@ function mostrarFormularioNetlify() {
             </form>
             <div id="respuestaNetlify" style="margin-top: 15px; font-weight: bold;"></div>
         </div>
-    `;
+    ;
 
     document.getElementById("formNetlify").addEventListener("submit", function(e) {
         e.preventDefault();
